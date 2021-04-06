@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 public class EventHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @Getter
     @Setter
