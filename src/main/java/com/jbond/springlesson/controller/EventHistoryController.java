@@ -1,14 +1,14 @@
 package com.jbond.springlesson.controller;
 
 import com.jbond.springlesson.domain.EventHistory;
+import com.jbond.springlesson.exception.NotFoundException;
 import com.jbond.springlesson.repo.EventHistoryRepository;
 import com.jbond.springlesson.repo.EventTypeRepository;
 import com.jbond.springlesson.repo.VehicleRepository;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.swing.text.html.Option;
 import java.util.Collection;
@@ -28,21 +28,21 @@ public class EventHistoryController {
     }
 
     @GetMapping()
-    public Collection<EventHistory> getAllEventHistory(){
+    public Collection<EventHistory> getAllEventHistory() throws NotFoundException {
         Collection<EventHistory> optionalEventHistory = (Collection<EventHistory>) eventHistoryRepository.findAll();
-        if (optionalEventHistory.isEmpty()) return null;
+        if (optionalEventHistory.isEmpty()) throw new NotFoundException("Event History not found");;
         return optionalEventHistory;
     }
 
-    @GetMapping("/{id}")
-    public EventHistory getEventHistoryById(@PathVariable("id") Long id){
+
+    @RequestMapping(path = "/{id}", method = RequestMethod.GET)
+    public EventHistory getEventHistoryById(@PathVariable("id") Long id) throws NotFoundException {
         Optional<EventHistory> optEventHistory = eventHistoryRepository.findById(id);
         if (optEventHistory.isPresent()) {
             return optEventHistory.get();
         }
-        return null;
+        throw new NotFoundException("Event History with ID=" + id + " not found");
     }
-
 
 
 }
