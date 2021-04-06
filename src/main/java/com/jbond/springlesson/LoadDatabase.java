@@ -40,9 +40,14 @@ public class LoadDatabase {
             log.info("Preloading " + eventTypeRepository.save(eventType3));
             log.info("Preloading " + eventTypeRepository.save(eventType4));
 
-            EventHistory eventHistory1 = new EventHistory(1, LocalDateTime.now(), LocalDateTime.now(),"DESCR1", vehicle1, eventType1);
+            EventHistory eventHistory1 = new EventHistory(1, LocalDateTime.now().minusMinutes(20), LocalDateTime.now(),"DESCR1", vehicle1, eventType1);
+            EventHistory eventHistory2 = new EventHistory(1, LocalDateTime.now().minusMinutes(20), LocalDateTime.now(),"DESCR2", vehicle2, eventType2);
+            EventHistory eventHistory3 = new EventHistory(1, LocalDateTime.now().minusMinutes(20), LocalDateTime.now(),"DESCR3", vehicle3, eventType3);
 
             log.info("Preloading " + eventHistoryRepository.save(eventHistory1));
+            log.info("Preloading " + eventHistoryRepository.save(eventHistory2));
+            log.info("Preloading " + eventHistoryRepository.save(eventHistory3));
+
 //            log.info("Preloading " + eventHistoryRepository.save(new EventHistory(1, LocalDateTime.now(), LocalDateTime.now(),"DESCR1", new Vehicle("5"), new EventType( "Sttpg"))));
 
         };
