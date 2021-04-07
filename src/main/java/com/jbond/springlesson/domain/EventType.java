@@ -9,6 +9,7 @@ import java.util.Collection;
 @Entity
 @NoArgsConstructor
 @RequiredArgsConstructor
+@AllArgsConstructor
 public class EventType {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

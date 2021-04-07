@@ -22,14 +22,14 @@ public class LoadDatabase {
     CommandLineRunner initDatabase(VehicleRepository vehicleRepository, EventTypeRepository eventTypeRepository, EventHistoryRepository eventHistoryRepository) {
         return args -> {
 
-            for (int i = 0; i < 10; i++) {
-                Vehicle vehicle = new Vehicle("Vehicle"+i);
+            for (int i = 0; i < 20; i++) {
+                Vehicle vehicle = new Vehicle( "Vehicle"+i);
                 log.info("Preloading " + vehicleRepository.save(vehicle));
 
                 EventType eventType = new EventType("eventType"+i);
                 log.info("Preloading " + eventTypeRepository.save(eventType));
 
-                EventHistory eventHistory = new EventHistory(Long.parseLong(String.valueOf(i)), LocalDateTime.now().minusMinutes(20), LocalDateTime.now(),"DESCR"+i, vehicle, eventType);
+                EventHistory eventHistory = new EventHistory(LocalDateTime.now().minusMinutes(20), LocalDateTime.now(),"DESCR"+i, vehicle, eventType);
                 log.info("Preloading " + eventHistoryRepository.save(eventHistory));
 
             }

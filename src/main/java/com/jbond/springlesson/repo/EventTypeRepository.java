@@ -12,4 +12,5 @@ import java.util.List;
 public interface EventTypeRepository extends CrudRepository<EventType, Long> {
     List<EventType> findByName(@Param("name") String name);
     EventType findById(@Param("id") long id);
+    EventType findEventTypeByName(@Param("name") String name);
 }
