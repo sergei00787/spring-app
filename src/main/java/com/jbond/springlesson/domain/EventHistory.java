@@ -1,5 +1,6 @@
 package com.jbond.springlesson.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import javax.persistence.*;
@@ -17,10 +18,12 @@ public class EventHistory {
 
     @NonNull
     @Column(nullable = false)
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy'T'HH:mm:ss")
     private LocalDateTime time;
 
     @NonNull
     @Column(nullable = false)
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy'T'HH:mm:ss")
     private LocalDateTime timeCreate;
 
     @NonNull
