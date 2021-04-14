@@ -1,7 +1,6 @@
 package com.jbond.springlesson.domain;
 
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 
 import java.time.LocalDateTime;
 

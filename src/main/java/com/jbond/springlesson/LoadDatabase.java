@@ -24,13 +24,17 @@ public class LoadDatabase {
 
             for (int i = 0; i < 20; i++) {
                 Vehicle vehicle = new Vehicle( "Vehicle"+i);
-                log.info("Preloading " + vehicleRepository.save(vehicle));
+//                log.info("Preloading " + vehicleRepository.save(vehicle));
+                vehicleRepository.save(vehicle);
+
 
                 EventType eventType = new EventType("eventType"+i);
-                log.info("Preloading " + eventTypeRepository.save(eventType));
+//                log.info("Preloading " + eventTypeRepository.save(eventType));
+                eventTypeRepository.save(eventType);
 
                 EventHistory eventHistory = new EventHistory(LocalDateTime.now().minusMinutes(20), LocalDateTime.now(),"DESCR"+i, vehicle, eventType);
-                log.info("Preloading " + eventHistoryRepository.save(eventHistory));
+//                log.info("Preloading " + eventHistoryRepository.save(eventHistory));
+                eventHistoryRepository.save(eventHistory);
 
             }
         };
