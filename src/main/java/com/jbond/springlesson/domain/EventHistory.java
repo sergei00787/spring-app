@@ -32,11 +32,11 @@ public class EventHistory {
     private String eventDescription;
 
     @NonNull
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Vehicle vehicle;
 
     @NonNull
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private EventType eventType;
 
 }

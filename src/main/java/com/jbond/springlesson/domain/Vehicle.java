@@ -22,6 +22,6 @@ public class Vehicle {
 
     @Getter
     @Setter
-    @OneToMany(mappedBy = "vehicle", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "vehicle")
     private Collection<EventHistory> eventHistories;
 }
