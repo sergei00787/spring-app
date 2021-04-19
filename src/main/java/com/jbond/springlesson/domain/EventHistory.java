@@ -2,7 +2,6 @@ package com.jbond.springlesson.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
-import org.hibernate.annotations.Parent;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -32,11 +31,10 @@ public class EventHistory {
     private String eventDescription;
 
     @NonNull
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Vehicle vehicle;
 
     @NonNull
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private EventType eventType;
-
 }

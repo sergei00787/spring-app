@@ -2,7 +2,6 @@ package com.jbond.springlesson.domain;
 
 import lombok.*;
 import javax.persistence.*;
-import java.util.Collection;
 
 @Data
 @NoArgsConstructor
@@ -19,9 +18,4 @@ public class Vehicle {
     @Getter
     @NonNull
     private String vehName;
-
-    @Getter
-    @Setter
-    @OneToMany(mappedBy = "vehicle")
-    private Collection<EventHistory> eventHistories;
 }
