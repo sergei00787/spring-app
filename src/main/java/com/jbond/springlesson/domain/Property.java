@@ -5,11 +5,11 @@ import javax.persistence.*;
 import java.util.List;
 
 @Data
+@Entity
 @NoArgsConstructor
 @RequiredArgsConstructor
 @AllArgsConstructor
-@Entity
-public class Vehicle {
+public class Property {
     @Id
     @Column(nullable = false, unique = true)
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,12 +18,13 @@ public class Vehicle {
     @Setter
     @Getter
     @NonNull
-    private String vehName;
+    private String propName;
 
+    @Setter
+    @Getter
     @NonNull
-    @ManyToMany
-    @JoinTable(name = "vehicle_property",
-            joinColumns = @JoinColumn(name = "vehicle_id"),
-            inverseJoinColumns = @JoinColumn(name = "property_id"))
-    private List<Property> properties;
+    private String propType;
+
+
+
 }

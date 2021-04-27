@@ -2,6 +2,7 @@ package com.jbond.springlesson.repo;
 
 import com.jbond.springlesson.domain.EventHistory;
 import com.jbond.springlesson.domain.EventType;
+import com.jbond.springlesson.domain.Property;
 import com.jbond.springlesson.domain.Vehicle;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -10,6 +11,8 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -29,7 +32,11 @@ class EventHistoryRepositoryTest {
 
         LocalDateTime nowTime = LocalDateTime.now();
 
-        Vehicle vehicle = new Vehicle("vvv1");
+        List<Property> propertyList= new ArrayList<>();
+        Property prop = new Property("PropTest","String");
+        propertyList.add(prop);
+
+        Vehicle vehicle = new Vehicle("vvv1", propertyList);
         vehicleRepository.save(vehicle);
         Vehicle vehicle1 = vehicleRepository.findVehicleByVehName("vvv1");
         assertEquals(vehicle.getId(), vehicle1.getId());

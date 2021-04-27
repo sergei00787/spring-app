@@ -3,6 +3,7 @@ package com.jbond.springlesson.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jbond.springlesson.domain.EventHistory;
 import com.jbond.springlesson.domain.EventType;
+import com.jbond.springlesson.domain.Property;
 import com.jbond.springlesson.domain.Vehicle;
 import com.jbond.springlesson.repo.EventHistoryRepository;
 import com.jbond.springlesson.repo.EventTypeRepository;
@@ -15,6 +16,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -59,7 +62,11 @@ class EventHistoryControllerTest {
 
     @Test
     public void updateEventHistoryById() throws Exception {
-        Vehicle vehicle = new Vehicle("VehicleUpdate");
+        List<Property> propertyList= new ArrayList<>();
+        Property prop = new Property("PropTest","String");
+        propertyList.add(prop);
+
+        Vehicle vehicle = new Vehicle("VehicleUpdate",propertyList);
         vehicleRepository.save(vehicle);
         EventType eventType = new EventType("eventTypeUpdated");
         eventTypeRepository.save(eventType);
